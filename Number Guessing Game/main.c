@@ -15,15 +15,31 @@ Number Guessing Game:
 */
 int state = 0;      // current state
 int exitUI = 0;     // set to 1 to exit UI (and thus the program)
-int maxNum = 10;    // max number that can be picked, inclusive
-char input[1000];         // lastest input
+int maxNum;         // max number that can be picked, inclusive
+char fileinput[1000];   // maxNum file input
+char input[1000];   // lastest input
 int option;         // int version of input
 int r;              // random number
 
 int main() {
     // seed rng for numbers
     srand(time(NULL));
+    // set value of maxNum via file
+    FILE *fptr = fopen("max", "r");
+    // read from file
+    if (fptr == NULL) {
+        printf("Error opening file... creating new max file\n");
+        fclose(fptr);
+        fptr = fopen("max", "w");
+        fprintf(fptr, "10");
+        fclose(fptr);
+        fptr = fopen("max", "r");
+    }
 
+    fscanf(fptr, "%s", &fileinput);
+    maxNum = atoi(fileinput);
+
+    
     while(!exitUI) {
         switch(state){
             case 0:
@@ -79,6 +95,10 @@ int main() {
                     printf("Invalid option!\n");
                     break;
                 }
+                FILE *fptr;
+                fptr = fopen("./max","w");
+                fprintf(fptr, "%s", input);
+                fclose(fptr);
                 maxNum = option;
                 printf("New max number: %d\n", maxNum);
                 state = 0;
