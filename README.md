@@ -1,5 +1,5 @@
-# first_in_class
-in-class quiz, includes two programs to be written in C:
+# Bill Calculator
+includes two programs to be written in C:
 ## Restautaunt Bill
 calculate bill of a restauraunt by taking in the tax as user input, and selecting one of four meals randomly.
 
