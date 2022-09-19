@@ -1,5 +1,5 @@
-# Bill Calculator
-includes two programs to be written in C:
+small C programs to get used to syntax.
+
 ## Restautaunt Bill
 calculate bill of a restauraunt by taking in the tax as user input, and selecting one of four meals randomly.
 
